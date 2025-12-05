@@ -1,0 +1,88 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Main
+
+class StartMenu {
+startSession()
+displaySearchParameters()
+endSession()
+}
+
+class User {
++show recipescrochetBeginner<>
++show recipescrochetIntermediater<>
++show recipescrochetAdvanced<>
++search recipes()
+}
+
+class Recipes {
+- int needleSize
+- int yarnWeight
+- String level
+- String yarnType
+ArrayList[] Beginner
+ArrayList[] Intermediate
+ArrayList[] Advanced
+}
+
+class Test{
++ boolean enoughYarnForRecipe()
++ getRecipesByDifficulty()
++ testToStringOutput()
+}
+
+class TextUI {
++displayMsg()
+}
+
+class DB {
+getConnection()
+}
+
+class YarnGUI {
+createAndShowGUI()
+}
+
+User o-- Recipes
+Main *--StartMenu
+StartMenu *-- User
+
+Level -right[hidden]->needleSize
+yarnWeight -right[hidden]->needleSize
+Test -[hidden]d-> Level
+TextUI -[hidden]d-> yarnWeight
+TextUI -[hidden]u-> DB
+DB -[hidden]r-> YarnGUI
+
+
+
+enum Level {
+BEGINNER
+INTERMEDIATE
+ADVANCED
+}
+
+enum needleSize {
+2.0 MM
+2.5 MM
+3.0 MM
+3.5 MM
+4.0 MM
+5.0 MM
+6.0 MM
+7.0 MM
+}
+
+enum yarnWeight {
+25 GRAM
+50 GRAM
+75 GRAM
+100 GRAM
+125 GRAM
+150 GRAM
+
+
+}
+
+@enduml
