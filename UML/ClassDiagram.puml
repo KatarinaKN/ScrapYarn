@@ -17,10 +17,13 @@ class User {
 }
 
 class Recipes {
+- String name
 - int needleSize
 - int yarnWeight
 - String level
 - String yarnType
+- String category
+- filepath Receipe
 ArrayList[] Beginner
 ArrayList[] Intermediate
 ArrayList[] Advanced
