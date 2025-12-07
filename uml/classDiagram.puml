@@ -1,45 +1,100 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-package Util {
+class Main
+
+class StartMenu {
++ void startSession()
++ int knitOrCrochet()
++ int chooseLevel()
++ int amountOfYarn()
++ int chooseNeedleSize()
++ int chooseYarnType()
++ int chooseGauge()
++ ArrayList<Recipe> showRecipes()
++ boolean tryAgain()
++ Recipe getRandomRecipe()
++ void endSession()
+}
+
+class Recipe {
+- String name
+- double needleSize
+- int yarnAmount
+- String level
+- String yarnType
+- String category
+- int gauge
+- filepath Recipe
+- ArrayList<Recipe> beginnerCrochet
+- ArrayList<Recipe> intermediateCrochet
+- ArrayList<Recipe> advancedCrochet
+- ArrayList<Recipe> beginnerKnit
+- ArrayList<Recipe> intermediateKnit
+- ArrayList<Recipe> advancedKnit
++ String toString()
++ ArrayList<Recipe> showRecipesCrochetBeginner()
++ ArrayList<Recipe> showRecipesCrochetIntermediate()
++ ArrayList<Recipe> showRecipesCrochetAdvanced()
++ ArrayList<Recipe> showRecipesKnitBeginner()
++ ArrayList<Recipe> showRecipesKnitIntermediate()
++ ArrayList<Recipe> showRecipesKnitAdvanced()
++ ArrayList<Recipe> searchRecipes()
++ String getName()
++ double getNeedleSize()
++ int getYarnAmount()
++ String getLevel()
++ String getYarnType()
++ String getCategory()
++ int getGauge()
++ String ifExtraMaterials()
+}
+
+package test {
+class Test {
++ boolean enoughYarnForRecipe()
++ ArrayList<Recipe> getRecipesByDifficulty()
++ String testToStringOutput()
+}
+}
+
+package util {
 class TextUI {
 + String displayMsg()
 + String promptTxt()
-+ int promptNum()
++ int promptNumber()
 + boolean promptYesOrNo()
 }
 }
 
-class Main
-class Start {
-+ startSession()
-+ endSession()
+package db {
+class DB {
++ getConnection()
+}
 }
 
-class User {
-- name
-+ String getName()
-+ String setName()
-
+package gui {
+class YarnGUI {
++ createAndShowGUI()
+}
 }
 
-class Recipe {
-+ showRecipe()
-
-}
-
-enum YarnType {
-COTTON
-WOOL
-}
+Main *-- StartMenu
+StartMenu *-- User
+User o-- Recipe
+StartMenu *-- Recipe
+Recipe *-- Level
+Recipe *-- NeedleSize
+Recipe *-- YarnAmount
+Recipe *-- YarnType
+Recipe *-- ExtraMaterials
+Recipe *-- Gauge
+StartMenu *- TextUI
 
 enum Level {
 BEGINNER
 INTERMEDIATE
 ADVANCED
-}
-
-enum Gauge {
 }
 
 enum NeedleSize {
@@ -48,28 +103,24 @@ enum NeedleSize {
 3.0 MM
 3.5 MM
 4.0 MM
-4.5 MM
 5.0 MM
-5.5 MM
 6.0 MM
-6.5 MM
 7.0 MM
-7.5 MM
-8.0 MM
-8.5 MM
-9.0 MM
-9.5 MM
 }
 
 enum YarnAmount {
-25 GRAMS
-50 GRAMS
-75 GRAMS
-100 GRAMS
-125 GRAMS
-150 GRAMS
-175 GRAMS
-200 GRAMS
+25 GRAM
+50 GRAM
+75 GRAM
+100 GRAM
+125 GRAM
+150 GRAM
+}
+
+enum YarnType {
+WOOL
+COTTON
+MOHAIR
 }
 
 enum ExtraMaterials {
@@ -77,18 +128,10 @@ EMBROIDERY THREAD
 WADDING
 }
 
-Main *-- Start
-Start *-- TextUI
-Start *-- User
-User - Recipe
-
-Start *- Recipe
-Recipe *-- YarnType
-Recipe *-- Level
-Recipe *-- Gauge
-Recipe *-- NeedleSize
-Recipe *-- YarnAmount
-Recipe *-- ExtraMaterials
-
+enum Gauge {
+20 STITCHES
+23 STITCHES
+26 STITCHES
+}
 
 @enduml
