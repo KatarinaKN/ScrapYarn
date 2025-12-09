@@ -3,9 +3,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DB {
-    static Connection connect() throws SQLException {
-        Connection connection = DriverManager.getConnection("C:/Users/stine/Documents/DAT1/Java/ScrapYarn/src/main/resources");
-        return connection;
+    private static final String URL = "jdbc:sqlite:src/resources/patterns.db";
+
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(URL);
+    }
     }
 
-}
+
