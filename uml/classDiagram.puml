@@ -4,61 +4,91 @@
 class Main
 
 class StartMenu {
-startSession()
-displaySearchParameters()
-endSession()
++ void startSession()
++ int knitOrCrochet()
++ int chooseLevel()
++ int amountOfYarn()
++ int chooseNeedleSize()
++ int chooseYarnType()
++ int chooseGauge()
++ ArrayList<Pattern> showPatterns()
++ boolean tryAgain()
++ Pattern getRandomPattern()
++ void endSession()
 }
 
-class User {
-+show recipescrochetBeginner<>
-+show recipescrochetIntermediater<>
-+show recipescrochetAdvanced<>
-+search recipes()
-}
-
-class Recipes {
+class Pattern {
 - String name
-- int needleSize
-- int yarnWeight
+- double needleSize
+- int yarnAmount
 - String level
 - String yarnType
 - String category
-- filepath Receipe
-ArrayList[] Beginner
-ArrayList[] Intermediate
-ArrayList[] Advanced
+- int gauge
+- ArrayList<Pattern> beginnerCrochet
+- ArrayList<Pattern> intermediateCrochet
+- ArrayList<Pattern> advancedCrochet
+- ArrayList<Pattern> beginnerKnit
+- ArrayList<Pattern> intermediateKnit
+- ArrayList<Pattern> advancedKnit
++ String toString()
++ ArrayList<Pattern> showPatternsCrochetBeginner()
++ ArrayList<Pattern> showPatternsCrochetIntermediate()
++ ArrayList<Pattern> showPatternsCrochetAdvanced()
++ ArrayList<Pattern> showPatternsKnitBeginner()
++ ArrayList<Pattern> showPatternsKnitIntermediate()
++ ArrayList<Pattern> showPatternsKnitAdvanced()
++ ArrayList<Pattern> searchPatterns()
++ String getName()
++ double getNeedleSize()
++ int getYarnAmount()
++ String getLevel()
++ String getYarnType()
++ String getCategory()
++ int getGauge()
++ String ifExtraMaterials()
 }
 
-class Test{
-+ boolean enoughYarnForRecipe()
-+ getRecipesByDifficulty()
-+ testToStringOutput()
+package test {
+class Test {
++ boolean enoughYarnForPattern()
++ ArrayList<Recipe> getPatternsByDifficulty()
++ String testToStringOutput()
+}
 }
 
+package util {
 class TextUI {
-+displayMsg()
++ String displayMsg()
++ String promptTxt()
++ int promptNumber()
++ boolean promptYesOrNo()
+}
 }
 
+package db {
 class DB {
-getConnection()
++ getConnection()
+}
 }
 
+package gui {
 class YarnGUI {
-createAndShowGUI()
++ createAndShowGUI()
+}
 }
 
-User o-- Recipes
-Main *--StartMenu
-StartMenu *-- User
-
-Level -right[hidden]->needleSize
-yarnWeight -right[hidden]->needleSize
-Test -[hidden]d-> Level
-TextUI -[hidden]d-> yarnWeight
-TextUI -[hidden]u-> DB
-DB -[hidden]r-> YarnGUI
-
-
+Main *-- StartMenu
+StartMenu -- User
+User -- Pattern
+StartMenu *-- Pattern
+Pattern *-- Level
+Pattern *-- NeedleSize
+Pattern *-- YarnAmount
+Pattern *-- YarnType
+Pattern *-- ExtraMaterials
+Pattern *-- Gauge
+StartMenu *- TextUI
 
 enum Level {
 BEGINNER
@@ -66,7 +96,7 @@ INTERMEDIATE
 ADVANCED
 }
 
-enum needleSize {
+enum NeedleSize {
 2.0 MM
 2.5 MM
 3.0 MM
@@ -77,15 +107,30 @@ enum needleSize {
 7.0 MM
 }
 
-enum yarnWeight {
+enum YarnAmount {
 25 GRAM
 50 GRAM
 75 GRAM
 100 GRAM
 125 GRAM
 150 GRAM
+}
 
+enum YarnType {
+WOOL
+COTTON
+MOHAIR
+}
 
+enum ExtraMaterials {
+EMBROIDERY THREAD
+WADDING
+}
+
+enum Gauge {
+20 STITCHES
+23 STITCHES
+26 STITCHES
 }
 
 @enduml
