@@ -35,9 +35,9 @@ public class StartMenu {
         return 0;
     }
 
-    public ArrayList<Pattern> showAllPatterns(){
-        return allPatterns;
-    }
+    //public ArrayList<Pattern> showAllPatterns(){
+      //  return allPatterns;
+    //}
 
     //Spørger brugeren, om man vil prøve igen (hvis man ikke er tilfreds med de foreslåede opskrifter.
     public boolean tryAgain(){
@@ -45,9 +45,9 @@ public class StartMenu {
     }
 
     //Giver brugeren en tilfældig opskrift.
-    public Pattern getRandomPattern(){
-        return ;
-    }
+    //public Pattern getRandomPattern(){
+      //  return ;
+    //}
 
     public void endSession(){
 
