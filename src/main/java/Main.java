@@ -1,15 +1,13 @@
 import java.util.List;
 
 public class Main {
-    static void main() {
-        DBInquiries dbInquiries = new DBInquiries("jdbc:sqlite:src/main/resources/patterns.db");
+    public static void main(String[] args) {
+        DBInquiries db = new DBInquiries();
+        List<String> beginners = db.getCrochetPatternByLevel("Beginner");
 
-        dbInquiries.getCrochetPatternByLevel("beginner");
-
+        System.out.println("Begynder-opskrifter:");
+        for (String name : beginners) {
+            System.out.println(name);
         }
-
-
-
-
     }
-
+}
