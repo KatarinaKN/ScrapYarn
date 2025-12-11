@@ -1,22 +1,26 @@
 import java.util.ArrayList;
-import java.util.regex.Pattern;
 
 public class StartMenu {
 
-    //TODO vi skal et sted i vores program have en scanner, som kan læse brugerens svar.
+    TextUI ui = new TextUI();
 
     //TODO er det rigtigt, at alle vores metoder, der stiller spørgsmål, skal returnere noget?
 
     public void startSession(){
-
+        ui.displayMessage("Hi! Welcome to ScrapYarn where nothing goes to waste.");
+        //Skal denne metode så kalde alle spørgsmålsmetoderne? Og kan vi så til sidst bruge
+        //returns til at få vist en opskrift?
     }
 
     public int knitOrCrochet(){
-        return 0;
+        int knitOrCrochet = ui.promptNumber("What would you like to do today? Type \"1\" for knitting. \n Type \"2\" for crochet.");
+        return knitOrCrochet;
     }
 
     public int chooseLevel(){
-        return 0;
+        int level = ui.promptNumber("What level would you like your suggested pattern to be? \n Type \"1\" for beginner. " +
+                "\n Type \"2\" for intermediate. \n Type \"3\" for advanced.")
+        return level;
     }
 
     public int amountOfYarn(){
@@ -39,7 +43,7 @@ public class StartMenu {
         return allPatterns;
     }
 
-    //Spørger brugeren, om man vil prøve igen (hvis man ikke er tilfreds med de foreslåede opskrifter.
+    //Spørger brugeren, om man vil prøve igen (hvis man ikke er tilfreds med de foreslåede opskrifter).
     public boolean tryAgain(){
         return true;
     }
@@ -49,7 +53,8 @@ public class StartMenu {
         return ;
     }
 
+    //TODO: endSession er egentlig ikke super nødvendig. I Matador blev den brugt til at gemme spildata, men her gemmer vi jo ikke noget...
     public void endSession(){
-
+        ui.displayMessage("ScrapYarn is now closing. Have a scrappy day! :)");
     }
 }
