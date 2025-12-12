@@ -20,10 +20,7 @@ public class TextUI {
     public int promptNumber(String message) {
         //------som i promptText men bruger vælger tal isf at skrive------
         displayMessage(message);
-        String input = scanner.nextLine();
-
-        //------Parser input til tal, fx vælg '1' isf for at skrive begynder-------
-        int numberInput = Integer.parseInt(input);
+        int numberInput = scanner.nextInt();
         return numberInput;
     }
 
@@ -31,8 +28,7 @@ public class TextUI {
         displayMessage(message);
         String input = scanner.nextLine();
 
-        //------J for "JA" / husk at ændre hvis menu skal være engelsk------
-        if (input.equalsIgnoreCase("J")) {
+        if (input.equalsIgnoreCase("Y")) {
             return true;
         } else if (input.equalsIgnoreCase("N")) {
             return false;
