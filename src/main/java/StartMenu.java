@@ -1,3 +1,5 @@
+import util.TextUI;
+
 import java.util.ArrayList;
 
 public class StartMenu {
@@ -12,14 +14,28 @@ public class StartMenu {
         //returns til at få vist en opskrift?
     }
 
+
+
     public int knitOrCrochet(){
         int knitOrCrochet = ui.promptNumber("What would you like to do today? Type \"1\" for knitting. \n Type \"2\" for crochet.");
-        return knitOrCrochet;
+
+        //Hvis knitOrCrochet == 1
+            //Gennemløb ArrayList med patterns.
+            //Sortér hækleopskrifter fra.
+
+        //Hvis knitOrCrochet == 2
+            //Gennemløb ArrayList med patterns.
+            //Sortér strikkeopskrifter fra.
+
+        //Else (brugeren har tastet noget andet end 1 og 2)
+            //Stil spørgsmålet igen.
+
+        return knitOrCrochet; //Skal den returnere noget andet? For eksempel en ArrayList?...
     }
 
     public int chooseLevel(){
         int level = ui.promptNumber("What level would you like your suggested pattern to be? \n Type \"1\" for beginner. " +
-                "\n Type \"2\" for intermediate. \n Type \"3\" for advanced.")
+                "\n Type \"2\" for intermediate. \n Type \"3\" for advanced.");
         return level;
     }
 

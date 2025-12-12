@@ -4,6 +4,32 @@ import java.util.List;
 
 public class DBInquiries {
 
+    //TODO her skal alle forespørgselsmetoder ligge.
+
+    //TODO getAllKnitPatterns skal ændres til getAllPatterns. Den skal lægge ALLE opskrifter
+    //TODO ind i en ArrayList.
+
+    //TODO Tag stilling til om getPatternByLevel kan undværes.
+
+
+    public ArrayList<Pattern> getAllKnitPatterns() {
+        ArrayList<Pattern> allKnitPatterns = new ArrayList<>();
+        String sql = "SELECT * FROM pattern WHERE Crafttype = 'Knit'";
+        try (Connection connection = DBConnection.getConnection();
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(sql)) {
+
+            while (resultSet.next()) {
+                int needleSize = resultSet.getInt("Needlesize");
+                String name = resultSet.getString("Name");
+                allKnitPatterns.add(new Pattern(name, needleSize));
+            }
+        } catch (SQLException e) {
+            System.out.println("Fejl i adgang til database");
+            System.out.println(e.getMessage());
+        }
+        return allKnitPatterns;
+    }
 
     public List<String> getCrochetPatternByLevel(String level) {
         List<String> patterns = new ArrayList<>();

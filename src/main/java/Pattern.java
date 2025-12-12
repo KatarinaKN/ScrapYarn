@@ -8,12 +8,6 @@ public class Pattern {
     private String yarnType;
     private String category;
     private int gauge;
-    private ArrayList<Pattern> beginnerCrochet = new ArrayList<>();
-    private ArrayList<Pattern> intermediateCrochet = new ArrayList<>();
-    private ArrayList<Pattern> advancedCrochet = new ArrayList<>();
-    private ArrayList<Pattern> beginnerKnit = new ArrayList<>();
-    private ArrayList<Pattern> intermediateKnit = new ArrayList<>();
-    private ArrayList<Pattern> advancedKnit = new ArrayList<>();
 
     public Pattern (String name, double needleSize, int yarnAmount, String level, String yarnType, String category, int gauge) {
         this.name = name;
