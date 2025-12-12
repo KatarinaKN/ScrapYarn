@@ -1,4 +1,5 @@
     import java.io.File;
+    import java.util.ArrayList;
     import java.util.List;
 
 
@@ -15,9 +16,12 @@
                 System.out.println(name);
             }*/
 
-            PatternCatalogue catalogue = new PatternCatalogue();
 
-            System.out.println(catalogue.getAllKnitPatterns());
+            StartMenu start = new StartMenu();
+            ArrayList<Pattern> patterns = new ArrayList<>();
+
+            ArrayList<Pattern> knitOrCrochet = start.chooseKnitOrCrochet(patterns);
+            System.out.println(knitOrCrochet);
 
         }
     }

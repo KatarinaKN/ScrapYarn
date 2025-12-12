@@ -16,21 +16,24 @@ public class StartMenu {
 
 
 
-    public int knitOrCrochet(){
-        int knitOrCrochet = ui.promptNumber("What would you like to do today? Type \"1\" for knitting. \n Type \"2\" for crochet.");
+    public ArrayList<Pattern> chooseKnitOrCrochet(ArrayList<Pattern> patterns){
+        ArrayList<Pattern> knitOrCrochet = new ArrayList<>();
+        int input = ui.promptNumber("What would you like to do today? Type \"1\" for knitting. \n Type \"2\" for crochet.");
 
-        //Hvis knitOrCrochet == 1
-            //Gennemløb ArrayList med patterns.
-            //Sortér hækleopskrifter fra.
-
-        //Hvis knitOrCrochet == 2
-            //Gennemløb ArrayList med patterns.
-            //Sortér strikkeopskrifter fra.
-
-        //Else (brugeren har tastet noget andet end 1 og 2)
-            //Stil spørgsmålet igen.
-
-        return knitOrCrochet; //Skal den returnere noget andet? For eksempel en ArrayList?...
+        if (input == 1) {
+            for(Pattern p : patterns){
+                if (p.getCraftType().equalsIgnoreCase("knit"));
+                knitOrCrochet.add(p);
+            }
+        } else if (input == 2) {
+            for(Pattern p : patterns){
+                if (p.getCraftType().equalsIgnoreCase("crochet"));
+                knitOrCrochet.add(p);
+            }
+        } else {
+            chooseKnitOrCrochet(patterns);
+        }
+        return knitOrCrochet;
     }
 
     public int chooseLevel(){

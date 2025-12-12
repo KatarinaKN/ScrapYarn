@@ -20,9 +20,9 @@ public class DBInquiries {
              ResultSet resultSet = statement.executeQuery(sql)) {
 
             while (resultSet.next()) {
-                int needleSize = resultSet.getInt("Needlesize");
+                //double needleSize = resultSet.getDouble("Needlesize");
                 String name = resultSet.getString("Name");
-                allKnitPatterns.add(new Pattern(name, needleSize));
+                allKnitPatterns.add(new Pattern(name));
             }
         } catch (SQLException e) {
             System.out.println("Fejl i adgang til database");
