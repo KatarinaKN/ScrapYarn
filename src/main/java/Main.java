@@ -1,15 +1,19 @@
-import java.util.List;
+    import java.io.File;
+    import java.util.List;
 
-public class Main {
-    static void main() {
-        DBInquiries dbInquiries = new DBInquiries("jdbc:sqlite:src/main/resources/patterns.db");
 
-        dbInquiries.getCrochetPatternByLevel("beginner");
+    public class Main {
+        public static void main(String[] args)  {
+
+            //-------ALT NEDENSTÅENDE ER TIL TEST----------
+            OpenPdfTest.openPdfById(1);
+            DBInquiries db = new DBInquiries();
+            List<String> beginners = db.getCrochetPatternByLevel("Beginner");
+
+            System.out.println("Begynder-opskrifter:");
+            for (String name : beginners) {
+                System.out.println(name);
+            }
 
         }
-
-
-
-
     }
-

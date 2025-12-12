@@ -5,7 +5,6 @@
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\Users\stine\Documents\DAT1\Java\ScrapYarn\data\patterns.db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
     <data-source source="LOCAL" name="patterns" uuid="d0a3912e-3ec7-4081-bc93-e3e1482a4014">
