@@ -6,11 +6,12 @@
         public static void main(String[] args)  {
 
             //-------ALT NEDENSTÅENDE ER TIL TEST----------
+
             OpenPdf.openPdfById(1);
             DBInquiries db = new DBInquiries();
-            List<String> beginners = db.getCrochetPatternByLevel("Beginner");
+            List<String> beginners = db.getCrochetPatternByLevel("Intermediate");
 
-            System.out.println("Begynder-opskrifter:");
+            System.out.println("Intermediate-opskrifter:");
             for (String name : beginners) {
                 System.out.println(name);
             }
