@@ -19,9 +19,11 @@
 
             StartMenu start = new StartMenu();
 
-            ArrayList<Pattern> knitOrCrochet = start.chooseKnitOrCrochet();
+            start.startSession();
 
-            System.out.println(knitOrCrochet);
+            ArrayList<Pattern> level = start.chooseLevel();
+
+            System.out.println(level);
 
         }
     }

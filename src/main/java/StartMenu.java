@@ -10,26 +10,27 @@ public class StartMenu {
 
     public void startSession(){
         ui.displayMessage("Hi! Welcome to ScrapYarn where nothing goes to waste.");
-        //Skal denne metode så kalde alle spørgsmålsmetoderne? Og kan vi så til sidst bruge
-        //returns til at få vist en opskrift?
+        chooseKnitOrCrochet();
+        chooseLevel();
     }
 
 
     DBInquiries db = new DBInquiries();
+    ArrayList<Pattern> knitOrCrochet = new ArrayList<>();
+    ArrayList<Pattern> allPatterns = db.getAllPatterns();
 
     public ArrayList<Pattern> chooseKnitOrCrochet(){
-        ArrayList<Pattern> knitOrCrochet = new ArrayList<>();
-        ArrayList<Pattern> allPatterns = db.getAllPatterns();
+
         int input = ui.promptNumber("What would you like to do today? \nType \"1\" for knitting. \nType \"2\" for crochet.");
 
         if (input == 1) {
-            for(Pattern p : allPatterns){
+            for(Pattern p : allPatterns) {
                 if (p.getCraftType().equalsIgnoreCase("knit")) {
                     knitOrCrochet.add(p);
                 }
             }
         } else if (input == 2) {
-            for(Pattern p : allPatterns){
+            for(Pattern p : allPatterns) {
                 if (p.getCraftType().equalsIgnoreCase("crochet")) {
                     knitOrCrochet.add(p);
                 }
@@ -40,9 +41,32 @@ public class StartMenu {
         return knitOrCrochet;
     }
 
-    public int chooseLevel(){
-        int level = ui.promptNumber("What level would you like your suggested pattern to be? \n Type \"1\" for beginner. " +
-                "\n Type \"2\" for intermediate. \n Type \"3\" for advanced.");
+    public ArrayList<Pattern> chooseLevel(){
+        ArrayList<Pattern> level = new ArrayList<>();
+        int input = ui.promptNumber("What level would you like your suggested pattern to be? \nType \"1\" for beginner. " +
+                "\nType \"2\" for intermediate. \nType \"3\" for advanced.");
+
+        if (input == 1) {
+            for (Pattern p : knitOrCrochet) {
+                if (p.getLevel().equalsIgnoreCase("beginner")) {
+                    level.add(p);
+                }
+            }
+        } else if (input == 2) {
+            for (Pattern p : knitOrCrochet) {
+                if (p.getLevel().equalsIgnoreCase("intermediate")) {
+                    level.add(p);
+                }
+            }
+        } else if (input == 3) {
+            for (Pattern p : knitOrCrochet) {
+                if (p.getLevel().equalsIgnoreCase("advanced")) {
+                    level.add(p);
+                }
+            }
+        } else {
+            chooseLevel();
+        }
         return level;
     }
 
