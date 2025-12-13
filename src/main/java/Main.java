@@ -6,9 +6,9 @@
     public class Main {
         public static void main(String[] args)  {
 
-          /*  //-------ALT NEDENSTÅENDE ER TIL TEST----------
-            OpenPdfTest.openPdfById(1);
-            DBInquiries db = new DBInquiries();
+            //-------ALT NEDENSTÅENDE ER TIL TEST----------
+            //OpenPdfTest.openPdfById(1);
+            /*DBInquiries db = new DBInquiries();
             List<String> beginners = db.getCrochetPatternByLevel("Advanced");
 
            // System.out.println("Begynder-opskrifter:");
