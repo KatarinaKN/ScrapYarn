@@ -5,19 +5,23 @@ import java.util.ArrayList;
 public class StartMenu {
 
     TextUI ui = new TextUI();
-
-    //TODO er det rigtigt, at alle vores metoder, der stiller spørgsmål, skal returnere noget?
-
-    public void startSession(){
-        ui.displayMessage("Hi! Welcome to ScrapYarn where nothing goes to waste.");
-        chooseKnitOrCrochet();
-        chooseLevel();
-    }
-
-
     DBInquiries db = new DBInquiries();
     ArrayList<Pattern> knitOrCrochet = new ArrayList<>();
     ArrayList<Pattern> allPatterns = db.getAllPatterns();
+
+    //TODO er det rigtigt, at alle vores metoder, der stiller spørgsmål, skal returnere noget?
+
+    public void startSession() {
+        //-------While-loop med try Again()
+        ui.displayMessage("Hi! Welcome to ScrapYarn where nothing goes to waste.");
+        chooseKnitOrCrochet();
+
+        ArrayList<Pattern> filterByLevel = chooseLevel();
+        for (Pattern p : filterByLevel) {
+            System.out.println(p);
+        }
+    }
+
 
     public ArrayList<Pattern> chooseKnitOrCrochet(){
 
@@ -40,6 +44,7 @@ public class StartMenu {
         }
         return knitOrCrochet;
     }
+
 
     public ArrayList<Pattern> chooseLevel(){
         ArrayList<Pattern> level = new ArrayList<>();
@@ -92,7 +97,8 @@ public class StartMenu {
 
     //Spørger brugeren, om man vil prøve igen (hvis man ikke er tilfreds med de foreslåede opskrifter).
     public boolean tryAgain(){
-        return true;
+        int input = ui.promptNumber("Would you like to try again?\n1.Yes \n2.No");
+        return input == 1;
     }
 
     //Giver brugeren en tilfældig opskrift.
