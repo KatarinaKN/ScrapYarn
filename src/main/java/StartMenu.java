@@ -15,23 +15,27 @@ public class StartMenu {
     }
 
 
+    DBInquiries db = new DBInquiries();
 
-    public ArrayList<Pattern> chooseKnitOrCrochet(ArrayList<Pattern> patterns){
+    public ArrayList<Pattern> chooseKnitOrCrochet(){
         ArrayList<Pattern> knitOrCrochet = new ArrayList<>();
-        int input = ui.promptNumber("What would you like to do today? Type \"1\" for knitting. \n Type \"2\" for crochet.");
+        ArrayList<Pattern> allPatterns = db.getAllPatterns();
+        int input = ui.promptNumber("What would you like to do today? \nType \"1\" for knitting. \nType \"2\" for crochet.");
 
         if (input == 1) {
-            for(Pattern p : patterns){
-                if (p.getCraftType().equalsIgnoreCase("knit"));
-                knitOrCrochet.add(p);
+            for(Pattern p : allPatterns){
+                if (p.getCraftType().equalsIgnoreCase("knit")) {
+                    knitOrCrochet.add(p);
+                }
             }
         } else if (input == 2) {
-            for(Pattern p : patterns){
-                if (p.getCraftType().equalsIgnoreCase("crochet"));
-                knitOrCrochet.add(p);
+            for(Pattern p : allPatterns){
+                if (p.getCraftType().equalsIgnoreCase("crochet")) {
+                    knitOrCrochet.add(p);
+                }
             }
         } else {
-            chooseKnitOrCrochet(patterns);
+            chooseKnitOrCrochet();
         }
         return knitOrCrochet;
     }

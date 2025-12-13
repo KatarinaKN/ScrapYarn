@@ -1,27 +1,24 @@
 import java.util.ArrayList;
 
 public class Pattern {
-    private String craftType;
     private String name;
-    private double needleSize;
-    private int yarnAmount;
+    private String craftType;
     private String level;
+    private int yarnAmount;
+    private double needleSize;
+    private String gauge;
     private String yarnType;
     private String category;
-    private int gauge;
 
-    public Pattern (String craftType, String name, double needleSize, int yarnAmount, String level, String yarnType, String category, int gauge) {
-        this.craftType = craftType;
+    public Pattern (String name, String craftType, String level, int yarnAmount, double needleSize, String gauge, String yarnType, String category) {
         this.name = name;
-        this.needleSize = needleSize;
-        this.yarnAmount = yarnAmount;
+        this.craftType = craftType;
         this.level = level;
+        this.yarnAmount = yarnAmount;
+        this.needleSize = needleSize;
+        this.gauge = gauge;
         this.yarnType = yarnType;
         this.category = category;
-        this.gauge = gauge;
-    }
-
-    public Pattern(String name) {
     }
 
     //Spørger brugeren, om der også må komme forslag, der indeholder ekstra materialer.
@@ -40,7 +37,8 @@ public class Pattern {
     }*/
 
     public String toString(){
-        return "";
+        return "\n-------------------- + \nName: " + name + "\nCraft type: " + craftType + "\nLevel: " + level + "\nYarn amount: " + yarnAmount
+                + "\nNeedle size: " + needleSize + "\nGauge: " + gauge + "\nYarn type: " + yarnType + "\nCategory: " + category + "\n--------------------";
     }
 
     public String getName(){
@@ -67,7 +65,7 @@ public class Pattern {
         return category;
     }
 
-    public int getGauge(){
+    public String getGauge(){
         return gauge;
     }
 

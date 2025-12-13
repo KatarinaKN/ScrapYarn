@@ -18,9 +18,9 @@
 
 
             StartMenu start = new StartMenu();
-            ArrayList<Pattern> patterns = new ArrayList<>();
 
-            ArrayList<Pattern> knitOrCrochet = start.chooseKnitOrCrochet(patterns);
+            ArrayList<Pattern> knitOrCrochet = start.chooseKnitOrCrochet();
+
             System.out.println(knitOrCrochet);
 
         }

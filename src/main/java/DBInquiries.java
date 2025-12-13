@@ -12,43 +12,30 @@ public class DBInquiries {
     //TODO Tag stilling til om getPatternByLevel kan undværes.
 
 
-    public ArrayList<Pattern> getAllKnitPatterns() {
-        ArrayList<Pattern> allKnitPatterns = new ArrayList<>();
-        String sql = "SELECT * FROM pattern WHERE Crafttype = 'Knit'";
+    public ArrayList<Pattern> getAllPatterns() {
+        ArrayList<Pattern> allPatterns = new ArrayList<>();
+        String sql = "SELECT Name, Crafttype, Level, Yarnamount, Needlesize, Gauge, Yarntype, Category FROM pattern";
         try (Connection connection = DBConnection.getConnection();
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(sql)) {
 
             while (resultSet.next()) {
-                //double needleSize = resultSet.getDouble("Needlesize");
                 String name = resultSet.getString("Name");
-                allKnitPatterns.add(new Pattern(name));
+                String craftType = resultSet.getString("Crafttype");
+                String level = resultSet.getString("Level");
+                int yarnAmount = resultSet.getInt("Yarnamount");
+                double needleSize = resultSet.getDouble("Needlesize");
+                String gauge = resultSet.getString("Gauge");
+                String yarnType = resultSet.getString("Yarntype");
+                String category = resultSet.getString("Category");
+
+                Pattern p = new Pattern(name, craftType, level, yarnAmount, needleSize, gauge, yarnType, category);
+                allPatterns.add(p);
             }
         } catch (SQLException e) {
             System.out.println("Fejl i adgang til database");
             System.out.println(e.getMessage());
         }
-        return allKnitPatterns;
-    }
-
-    public List<String> getCrochetPatternByLevel(String level) {
-        List<String> patterns = new ArrayList<>();
-        String sql = "SELECT Name FROM pattern WHERE Level = ?";
-
-        try (Connection connection = DBConnection.getConnection();
-             PreparedStatement statement = connection.prepareStatement(sql)) {
-
-            statement.setString(1, level);
-            try (ResultSet resultSet = statement.executeQuery()) {
-                while (resultSet.next()) {
-                    patterns.add(resultSet.getString("Name"));
-                }
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return patterns;
+        return allPatterns;
     }
 }
