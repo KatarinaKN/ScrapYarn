@@ -6,7 +6,7 @@
         public static void main(String[] args)  {
 
             //-------ALT NEDENSTÅENDE ER TIL TEST----------
-            OpenPdfTest.openPdfById(1);
+            OpenPdf.openPdfById(1);
             DBInquiries db = new DBInquiries();
             List<String> beginners = db.getCrochetPatternByLevel("Beginner");
 

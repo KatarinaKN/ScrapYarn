@@ -1,3 +1,5 @@
+import util.TextUI;
+
 import java.util.ArrayList;
 
 public class StartMenu {
@@ -19,7 +21,7 @@ public class StartMenu {
 
     public int chooseLevel(){
         int level = ui.promptNumber("What level would you like your suggested pattern to be? \n Type \"1\" for beginner. " +
-                "\n Type \"2\" for intermediate. \n Type \"3\" for advanced.")
+                "\n Type \"2\" for intermediate. \n Type \"3\" for advanced.");
         return level;
     }
 
