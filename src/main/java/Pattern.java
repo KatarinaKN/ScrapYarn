@@ -9,8 +9,9 @@ public class Pattern {
     private String gauge;
     private String yarnType;
     private String category;
+    private String pathtopdf;
 
-    public Pattern (String name, String craftType, String level, int yarnAmount, double needleSize, String gauge, String yarnType, String category) {
+    public Pattern (String name, String craftType, String level, int yarnAmount, double needleSize, String gauge, String yarnType, String category, String pathtopdf) {
         this.name = name;
         this.craftType = craftType;
         this.level = level;
@@ -19,6 +20,7 @@ public class Pattern {
         this.gauge = gauge;
         this.yarnType = yarnType;
         this.category = category;
+        this.pathtopdf = pathtopdf;
     }
 
     //Spørger brugeren, om der også må komme forslag, der indeholder ekstra materialer.
@@ -39,6 +41,10 @@ public class Pattern {
     public String toString(){
         return "\n-------------------- + \nName: " + name + "\nCraft type: " + craftType + "\nLevel: " + level + "\nYarn amount: " + yarnAmount
                 + "\nNeedle size: " + needleSize + "\nGauge: " + gauge + "\nYarn type: " + yarnType + "\nCategory: " + category + "\n--------------------";
+    }
+
+    public String getPathtopdf() {
+        return pathtopdf;
     }
 
     public String getName(){

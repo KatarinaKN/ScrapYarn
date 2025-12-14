@@ -14,7 +14,7 @@ public class DBInquiries {
 
     public ArrayList<Pattern> getAllPatterns() {
         ArrayList<Pattern> allPatterns = new ArrayList<>();
-        String sql = "SELECT Name, Crafttype, Level, Yarnamount, Needlesize, Gauge, Yarntype, Category FROM pattern";
+        String sql = "SELECT Name, Crafttype, Level, Yarnamount, Needlesize, Gauge, Yarntype, Category, pathtopdf FROM pattern";
         try (Connection connection = DBConnection.getConnection();
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(sql)) {
@@ -28,8 +28,9 @@ public class DBInquiries {
                 String gauge = resultSet.getString("Gauge");
                 String yarnType = resultSet.getString("Yarntype");
                 String category = resultSet.getString("Category");
+                String pathtopdf = resultSet.getString("pathtopdf");
 
-                Pattern p = new Pattern(name, craftType, level, yarnAmount, needleSize, gauge, yarnType, category);
+                Pattern p = new Pattern(name, craftType, level, yarnAmount, needleSize, gauge, yarnType, category, pathtopdf);
                 allPatterns.add(p);
             }
         } catch (SQLException e) {

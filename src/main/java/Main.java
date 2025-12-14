@@ -21,9 +21,9 @@
 
             start.startSession();
 
-            ArrayList<Pattern> level = start.chooseLevel();
-
-            System.out.println(level);
+            //Kommenteret ud for de laver et loop med level efter man vælger, man ikke vil prøve igem
+            //ArrayList<Pattern> level = start.chooseLevel();
+            //System.out.println(level);
 
         }
     }

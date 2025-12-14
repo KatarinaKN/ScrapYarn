@@ -1,5 +1,7 @@
 import util.TextUI;
 
+import java.awt.*;
+import java.io.File;
 import java.util.ArrayList;
 
 public class StartMenu {
@@ -10,25 +12,22 @@ public class StartMenu {
     ArrayList<Pattern> allPatterns = db.getAllPatterns();
 
     //TODO er det rigtigt, at alle vores metoder, der stiller spørgsmål, skal returnere noget?
+    /*Nej - her er tommelfingerreglerne:
+    1. Stil spørgsmål og filtrer data = returner resultat
+    2. Stil spørgsmål og styr flow = returner int eller boolean
+    3. Vis noget = Void / IKKE return
+    */
 
     public void startSession() {
         ui.displayMessage("Hi! Welcome to ScrapYarn where nothing goes to waste.");
 
         boolean running = true;
         while (running) {
-            knitOrCrochet.clear();
             chooseKnitOrCrochet();
-
             ArrayList<Pattern> filterByLevel = chooseLevel();
-
-            if (filterByLevel.isEmpty()) {
-                ui.displayMessage("No patterns matched your choices");
-            } else {
-                for (Pattern p : filterByLevel) {
-                    System.out.println(p);
-                }
-               // int showPdf = ui.promptNumber("Would you like to open the pdf?\n1.Yes\n2.No");
-
+            for (Pattern p : filterByLevel) {
+                System.out.println(p);
+                askToOpenPdf(p);
             }
             running = tryAgain();
         }
@@ -37,9 +36,11 @@ public class StartMenu {
 
     public ArrayList<Pattern> chooseKnitOrCrochet() {
 
-        int input = ui.promptNumber("What would you like to do today? \nType \"1\" for knitting. \nType \"2\" for crochet.");
+        int input = ui.promptNumber("What would you like to do today? " +
+                "\nType \"1\" for knitting. " +
+                "\nType \"2\" for crochet."
+        );
 
-        knitOrCrochet.clear(); //Dette rydder listen igen, hvis du taster forkert og bliver sendt tilbage
         if (input == 1) {
             for (Pattern p : allPatterns) {
                 if (p.getCraftType().equalsIgnoreCase("knit")) {
@@ -60,72 +61,88 @@ public class StartMenu {
     }
 
 
-public ArrayList<Pattern> chooseLevel() {
-    ArrayList<Pattern> level = new ArrayList<>();
-    int input = ui.promptNumber("What level would you like your suggested pattern to be?" +
-            " \nType \"1\" for beginner. " +
-            "\nType \"2\" for intermediate. " +
-            "\nType \"3\" for advanced.");
+    public ArrayList<Pattern> chooseLevel() {
+        ArrayList<Pattern> level = new ArrayList<>();
+        int input = ui.promptNumber("What level would you like your suggested pattern to be?" +
+                " \nType \"1\" for beginner. " +
+                "\nType \"2\" for intermediate. " +
+                "\nType \"3\" for advanced.");
 
-    if (input == 1) {
-        for (Pattern p : knitOrCrochet) {
-            if (p.getLevel().equalsIgnoreCase("beginner")) {
-                level.add(p);
+        if (input == 1) {
+            for (Pattern p : knitOrCrochet) {
+                if (p.getLevel().equalsIgnoreCase("beginner")) {
+                    level.add(p);
+                }
             }
-        }
-    } else if (input == 2) {
-        for (Pattern p : knitOrCrochet) {
-            if (p.getLevel().equalsIgnoreCase("intermediate")) {
-                level.add(p);
+        } else if (input == 2) {
+            for (Pattern p : knitOrCrochet) {
+                if (p.getLevel().equalsIgnoreCase("intermediate")) {
+                    level.add(p);
+                }
             }
-        }
-    } else if (input == 3) {
-        for (Pattern p : knitOrCrochet) {
-            if (p.getLevel().equalsIgnoreCase("advanced")) {
-                level.add(p);
+        } else if (input == 3) {
+            for (Pattern p : knitOrCrochet) {
+                if (p.getLevel().equalsIgnoreCase("advanced")) {
+                    level.add(p);
+                }
             }
+        } else {
+            ui.displayMessage("Invalid input. Please try again");
+            return chooseLevel();
         }
-    } else {
-        ui.displayMessage("Invalid input. Please try again");
-       return chooseLevel();
+        return level;
     }
-    return level;
-}
 
-public int amountOfYarn() {
-    return 0;
-}
+    public int amountOfYarn() {
+        return 0;
+    }
 
-public int chooseNeedleSize() {
-    return 0;
-}
+    public int chooseNeedleSize() {
+        return 0;
+    }
 
-public int chooseYarnType() {
-    return 0;
-}
+    public int chooseYarnType() {
+        return 0;
+    }
 
-public int chooseGauge() {
-    return 0;
-}
+    public int chooseGauge() {
+        return 0;
+    }
+    //------Flyt til PatternCatalogue? Så den klasse indeholder Arraylister/kataloger inkl. random
+    /*public ArrayList<Pattern> showAllPatterns() {
+        return new ArrayList<>(patterns);
+    } */
 
-//public ArrayList<Pattern> showAllPatterns(){
-//  return allPatterns;
-//}
+    //Spørger brugeren, om man vil prøve igen (hvis man ikke er tilfreds med de foreslåede opskrifter).
+    public boolean tryAgain() {
+        int input = ui.promptNumber("Would you like to try again?\n1.Yes \n2.No");
+        return input == 1;
+    }
 
-//Spørger brugeren, om man vil prøve igen (hvis man ikke er tilfreds med de foreslåede opskrifter).
-public boolean tryAgain() {
-    int input = ui.promptNumber("Would you like to try again?\n1.Yes \n2.No");
-    return input == 1;
-}
+    //------Metode til at åbne pdf som valgmulighed------
+    public void askToOpenPdf(Pattern pattern) {
+        int input = ui.promptNumber(
+                "Would you like to open the pdf for the pattern?" +
+                        "\n1.Yes" +
+                        "\n2.No"
+        );
+        if (input == 1) {
+            OpenPdfTest.openPdfByPath(pattern.getPathtopdf());
+        } else {
+            ui.displayMessage("PDF cannot open");
+        }
+    }
 
 
 //Giver brugeren en tilfældig opskrift.
-//public Pattern getRandomPattern(){
-//  return ;
-//}
+/*public Pattern getRandomPattern(){
+    Random random = new random;
+    int index = random.nextInt(patterns.size());
+     return patterns.get(index);
+}*/
 
-//TODO: endSession er egentlig ikke super nødvendig. I Matador blev den brugt til at gemme spildata, men her gemmer vi jo ikke noget...
-public void endSession() {
-    ui.displayMessage("ScrapYarn is now closing. Have a scrappy day! :)");
-}
+    //TODO: endSession er egentlig ikke super nødvendig. I Matador blev den brugt til at gemme spildata, men her gemmer vi jo ikke noget...
+    public void endSession() {
+        ui.displayMessage("ScrapYarn is now closing. Have a scrappy day! :)");
     }
+}

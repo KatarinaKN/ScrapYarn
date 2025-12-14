@@ -6,7 +6,21 @@ import java.sql.ResultSet;
 
 public class OpenPdfTest {
 
-    public static void openPdfById(int id) {
+    public static void openPdfByPath (String path){
+     try{
+         File file = new File (path);
+         if (!file.exists()) {
+             System.out.println("File not found" + file.getAbsolutePath());
+             return;
+         }
+         Desktop.getDesktop().open(file);
+         System.out.println("Pdf opening" + file.getAbsolutePath());
+     } catch (Exception e) {
+         e.printStackTrace();
+     }
+    }
+
+    /*public static void openPdfById(int id) {
         String query = "SELECT pathtopdf FROM pattern WHERE id = ?";
 
         try (Connection connection = DBConnection.getConnection();
@@ -33,5 +47,5 @@ public class OpenPdfTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+    }*/
 }
