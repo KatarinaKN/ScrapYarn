@@ -2,27 +2,25 @@ import java.util.ArrayList;
 
 public class Pattern {
     private String name;
-    private double needleSize;
-    private int yarnAmount;
+    private String craftType;
     private String level;
+    private int yarnAmount;
+    private double needleSize;
+    private String gauge;
     private String yarnType;
     private String category;
-    private int gauge;
-    private ArrayList<Pattern> beginnerCrochet = new ArrayList<>();
-    private ArrayList<Pattern> intermediateCrochet = new ArrayList<>();
-    private ArrayList<Pattern> advancedCrochet = new ArrayList<>();
-    private ArrayList<Pattern> beginnerKnit = new ArrayList<>();
-    private ArrayList<Pattern> intermediateKnit = new ArrayList<>();
-    private ArrayList<Pattern> advancedKnit = new ArrayList<>();
+    private String pathtopdf;
 
-    public Pattern (String name, double needleSize, int yarnAmount, String level, String yarnType, String category, int gauge) {
+    public Pattern (String name, String craftType, String level, int yarnAmount, double needleSize, String gauge, String yarnType, String category, String pathtopdf) {
         this.name = name;
-        this.needleSize = needleSize;
-        this.yarnAmount = yarnAmount;
+        this.craftType = craftType;
         this.level = level;
+        this.yarnAmount = yarnAmount;
+        this.needleSize = needleSize;
+        this.gauge = gauge;
         this.yarnType = yarnType;
         this.category = category;
-        this.gauge = gauge;
+        this.pathtopdf = pathtopdf;
     }
 
     //Spørger brugeren, om der også må komme forslag, der indeholder ekstra materialer.
@@ -41,7 +39,12 @@ public class Pattern {
     }*/
 
     public String toString(){
-        return "";
+        return "\n-------------------- + \nName: " + name + "\nCraft type: " + craftType + "\nLevel: " + level + "\nYarn amount: " + yarnAmount
+                + "\nNeedle size: " + needleSize + "\nGauge: " + gauge + "\nYarn type: " + yarnType + "\nCategory: " + category + "\n--------------------";
+    }
+
+    public String getPathtopdf() {
+        return pathtopdf;
     }
 
     public String getName(){
@@ -68,7 +71,11 @@ public class Pattern {
         return category;
     }
 
-    public int getGauge(){
+    public String getGauge(){
         return gauge;
+    }
+
+    public String getCraftType(){
+        return craftType;
     }
 }
