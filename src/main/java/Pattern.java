@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class Pattern {
+    private int primaryKey;
     private String name;
     private String craftType;
     private String level;
@@ -28,18 +29,9 @@ public class Pattern {
         return "";
     }
 
-   //TODO indsæt return. Kan man evt. slå alle showPatterns....-metoder sammen til én metode, for eksempel showPatterns(ArrayList<> ArrayList)?
-    /*public ArrayList<Pattern> showPatternsCrochetBeginner(){
-        return ;
-    }*/
-
-    //TODO indsæt return. Skal den have en parameter? For eksempel at man vil søge på strikkeopskrifter.
-    /*public ArrayList<Pattern> searchPatterns(){
-        return ;
-    }*/
 
     public String toString(){
-        return "\n--------------------" + "\nName: " + name + "\nCraft type: " + craftType +
+        return "\n--------------------" + "\nID: " + primaryKey + "\nName: " + name + "\nCraft type: " + craftType +
                 "\nLevel: " + level + "\nYarn amount: " + yarnAmount +
                 "\nNeedle size: " + needleSize + "\nGauge: " + gauge + "\nYarn type: " + yarnType +
                 "\nCategory: " + category + "\n--------------------";
@@ -47,6 +39,10 @@ public class Pattern {
 
     public String getPathtopdf() {
         return pathtopdf;
+    }
+
+    public int getPrimaryKey() {
+        return primaryKey;
     }
 
     public String getName(){
