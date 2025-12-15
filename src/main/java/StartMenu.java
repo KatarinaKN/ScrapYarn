@@ -20,7 +20,7 @@ public class StartMenu {
             for (Pattern p : filterByLevel) {
                 System.out.println(p);
 
-                //-----Ryk ud hvis der er flere opskrifter?------
+                //-----Ryk ud af forloopet, hvis der er flere opskrifter?------
                 askToOpenPdf(p);
             }
             running = tryAgain();
