@@ -4,91 +4,95 @@
 class Main
 
 class StartMenu {
++ void welcomeMessage()
 + void startSession()
-+ int knitOrCrochet()
-+ int chooseLevel()
-+ int amountOfYarn()
-+ int chooseNeedleSize()
-+ int chooseYarnType()
-+ int chooseGauge()
-+ ArrayList<Pattern> showPatterns()
-+ boolean tryAgain()
-+ Pattern getRandomPattern()
++ ArrayList<Pattern> chooseKnitOrCrochet()
++ ArrayList<Pattern> chooseYarnAmount()
++ ArrayList<Pattern> chooseLevel()
++ void printOptions()
++ Pattern selectPattern()
++ void tryAgain()
++ void askToOpenPdf()
 + void endSession()
 }
 
 class Pattern {
+- int id
 - String name
-- double needleSize
-- int yarnAmount
+- String craftType
 - String level
+- int yarnAmount
+- double needleSize
+- String gauge
 - String yarnType
 - String category
-- int gauge
-- ArrayList<Pattern> beginnerCrochet
-- ArrayList<Pattern> intermediateCrochet
-- ArrayList<Pattern> advancedCrochet
-- ArrayList<Pattern> beginnerKnit
-- ArrayList<Pattern> intermediateKnit
-- ArrayList<Pattern> advancedKnit
+- String pathtopdf
 + String toString()
-+ ArrayList<Pattern> showPatternsCrochetBeginner()
-+ ArrayList<Pattern> showPatternsCrochetIntermediate()
-+ ArrayList<Pattern> showPatternsCrochetAdvanced()
-+ ArrayList<Pattern> showPatternsKnitBeginner()
-+ ArrayList<Pattern> showPatternsKnitIntermediate()
-+ ArrayList<Pattern> showPatternsKnitAdvanced()
-+ ArrayList<Pattern> searchPatterns()
++ int getId()
 + String getName()
-+ double getNeedleSize()
-+ int getYarnAmount()
++ String getCraftType()
 + String getLevel()
++ int getYarnAmount()
++ double getNeedleSize()
++ int getGauge()
 + String getYarnType()
 + String getCategory()
-+ int getGauge()
-+ String ifExtraMaterials()
++ String getPathtopdf()
 }
 
-package test {
-class Test {
-+ boolean enoughYarnForPattern()
-+ ArrayList<Recipe> getPatternsByDifficulty()
-+ String testToStringOutput()
+class Knit {
 }
+
+class Crochet {
+}
+
+class OpenPdf {
++ void openPdfByPath()
 }
 
 package util {
 class TextUI {
-+ String displayMsg()
-+ String promptTxt()
++ String displayMessage()
++ String promptText()
 + int promptNumber()
 + boolean promptYesOrNo()
 }
 }
 
 package db {
-class DB {
-+ getConnection()
+class DBConnection {
++ Connection getConnection()
+}
+
+class DBInquiries {
++ ArrayList<Pattern> getAllPatterns()
 }
 }
 
-package gui {
-class YarnGUI {
-+ createAndShowGUI()
-}
+class ImplementLater {
+User
++ ArrayList<Pattern> chooseNeedleSize()
++ ArrayList<Pattern> chooseYarnType()
++ ArrayList<Pattern> chooseGauge()
++ ArrayList<Pattern> showPatterns()
++ Pattern getRandomPattern()
++ ArrayList<Pattern> searchPatterns()
++ String ifExtraMaterials()
 }
 
 Main *-- StartMenu
-StartMenu -- User
-User -- Pattern
-StartMenu *-- Pattern
-Pattern *-- Level
-Pattern *-- NeedleSize
-Pattern *-- YarnAmount
-Pattern *-- YarnType
-Pattern *-- ExtraMaterials
-Pattern *-- Gauge
+StartMenu -- Pattern
+Pattern *--- Level
+Pattern *--- NeedleSize
+Pattern *--- YarnAmount
+Pattern *--- YarnType
+Pattern *--- ExtraMaterials
+Pattern *--- Gauge
 StartMenu *- TextUI
+Pattern <|-- Knit
+Pattern <|-- Crochet
+StartMenu - DBConnection
+StartMenu -- DBInquiries
 
 enum Level {
 BEGINNER
@@ -97,23 +101,23 @@ ADVANCED
 }
 
 enum NeedleSize {
-2.0 MM
-2.5 MM
-3.0 MM
-3.5 MM
-4.0 MM
-5.0 MM
-6.0 MM
-7.0 MM
+NEEDLE_2
+NEEDLE_2_5
+NEEDLE_3
+NEEDLE_3_5
+NEEDLE_4
+NEEDLE_6
 }
 
 enum YarnAmount {
-25 GRAM
-50 GRAM
-75 GRAM
-100 GRAM
-125 GRAM
-150 GRAM
+GRAM25
+GRAM50
+GRAM75
+GRAM100
+GRAM125
+GRAM150
+GRAM175
+GRAM200
 }
 
 enum YarnType {
@@ -123,14 +127,27 @@ MOHAIR
 }
 
 enum ExtraMaterials {
-EMBROIDERY THREAD
+EMBROIDERY_THREAD
 WADDING
+NONE
 }
 
 enum Gauge {
-20 STITCHES
-23 STITCHES
-26 STITCHES
+S10_R10
+S12_R6
+S16_R22
+S17_R20
+S20_R41
+S22_R22
+S22_R30
+S23_R32
+S24_R10
+S24_R13
+S24_R26
+S24_R28
+S24_R66
+S26_R34
+S28_R16
 }
 
 @enduml
