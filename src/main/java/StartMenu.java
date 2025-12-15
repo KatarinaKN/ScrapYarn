@@ -27,6 +27,8 @@ public class StartMenu {
             ArrayList<Pattern> filterByLevel = chooseLevel();
             for (Pattern p : filterByLevel) {
                 System.out.println(p);
+
+                //-----Ryk ud hvis der er flere opskrifter?------
                 askToOpenPdf(p);
             }
             running = tryAgain();
@@ -129,7 +131,7 @@ public class StartMenu {
         if (input == 1) {
             OpenPdfTest.openPdfByPath(pattern.getPathtopdf());
         } else {
-            ui.displayMessage("PDF cannot open");
+            ui.displayMessage("You chose to not open PDF");
         }
     }
 
