@@ -8,6 +8,7 @@
 
             StartMenu start = new StartMenu();
 
+            start.welcomeMessage();
             start.startSession();
 
 

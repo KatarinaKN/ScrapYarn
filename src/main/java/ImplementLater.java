@@ -11,11 +11,6 @@ public Pattern getRandomPattern(){
     /*public ArrayList<Pattern> showAllPatterns() {
         return new ArrayList<>(patterns);
 
-
-    public int amountOfYarn() {
-        return 0;
-    }
-
     public int chooseNeedleSize() {
         return 0;
     }
@@ -28,6 +23,26 @@ public Pattern getRandomPattern(){
         return 0;
     }
 
+    }
+
+         boolean running = true;
+  while (running) {
+      chooseKnitOrCrochet();
+      chooseLevel();
+      chooseYarnAmount();
+      for (Pattern p : amountOfYarn) {
+          System.out.println(p);
+
+          //-----Ryk ud hvis der er flere opskrifter?------
+          askToOpenPdf(p);
+      }
+     // running = tryAgain();
+  }
+  endSession();
+
+    TODO indsæt return. Skal den have en parameter? For eksempel at man vil søge på strikkeopskrifter.
+    public ArrayList<Pattern> searchPatterns(){
+        return ;
     }
 
 
