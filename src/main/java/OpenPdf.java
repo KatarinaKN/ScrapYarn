@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class OpenPdfTest {
+public class OpenPdf {
 
     public static void openPdfById(int id) {
         String query = "SELECT pathtopdf FROM pattern WHERE id = ?";
@@ -25,7 +25,8 @@ public class OpenPdfTest {
                 }
 
                 Desktop.getDesktop().open(file);
-                System.out.println("Åbner PDF: " + file.getAbsolutePath());
+                System.out.println("Åbner PDF: " );
+                //------sæt dette ind, hvis stien skal vises: + file.getAbsolutePath()
             } else {
                 System.err.println("Ingen PDF fundet med id = " + id);
             }
