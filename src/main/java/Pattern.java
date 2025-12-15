@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Pattern {
-    private int primaryKey;
+    private int id;
     private String name;
     private String craftType;
     private String level;
@@ -12,7 +12,8 @@ public class Pattern {
     private String category;
     private String pathtopdf;
 
-    public Pattern (String name, String craftType, String level, int yarnAmount, double needleSize, String gauge, String yarnType, String category, String pathtopdf) {
+    public Pattern (int id, String name, String craftType, String level, int yarnAmount, double needleSize, String gauge, String yarnType, String category, String pathtopdf) {
+        this.id = id;
         this.name = name;
         this.craftType = craftType;
         this.level = level;
@@ -31,7 +32,7 @@ public class Pattern {
 
 
     public String toString(){
-        return "\n--------------------" + "\nID: " + primaryKey + "\nName: " + name + "\nCraft type: " + craftType +
+        return "\n--------------------" + "\nID: " + id + "\nName: " + name + "\nCraft type: " + craftType +
                 "\nLevel: " + level + "\nYarn amount: " + yarnAmount +
                 "\nNeedle size: " + needleSize + "\nGauge: " + gauge + "\nYarn type: " + yarnType +
                 "\nCategory: " + category + "\n--------------------";
@@ -41,8 +42,8 @@ public class Pattern {
         return pathtopdf;
     }
 
-    public int getPrimaryKey() {
-        return primaryKey;
+    public int getId() {
+        return id;
     }
 
     public String getName(){

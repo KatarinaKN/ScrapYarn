@@ -117,7 +117,7 @@ public class StartMenu {
         int input = ui.promptNumber("Please enter the ID of the pattern you have selected.");
 
         for (Pattern p : level) {
-            if (p.getPrimaryKey() == input) {
+            if (p.getId() == input) {
                 return p;
             }
         }
