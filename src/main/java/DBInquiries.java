@@ -4,14 +4,6 @@ import java.util.List;
 
 public class DBInquiries {
 
-    //TODO her skal alle forespørgselsmetoder ligge.
-
-    //TODO getAllKnitPatterns skal ændres til getAllPatterns. Den skal lægge ALLE opskrifter
-    //TODO ind i en ArrayList.
-
-    //TODO Tag stilling til om getPatternByLevel kan undværes.
-
-
     public ArrayList<Pattern> getAllPatterns() {
         ArrayList<Pattern> allPatterns = new ArrayList<>();
         String sql = "SELECT Name, Crafttype, Level, Yarnamount, Needlesize, Gauge, Yarntype, Category, pathtopdf FROM pattern";
