@@ -6,24 +6,11 @@
     public class Main {
         public static void main(String[] args)  {
 
-            //-------ALT NEDENSTÅENDE ER TIL TEST----------
-            //OpenPdfTest.openPdfById(1);
-            /*DBInquiries db = new DBInquiries();
-            List<String> beginners = db.getCrochetPatternByLevel("Advanced");
-
-           // System.out.println("Begynder-opskrifter:");
-            for (String name : beginners) {
-                System.out.println(name);
-            }*/
-
-
             StartMenu start = new StartMenu();
 
             start.startSession();
 
-            //Kommenteret ud for de laver et loop med level efter man vælger, man ikke vil prøve igem
-            //ArrayList<Pattern> level = start.chooseLevel();
-            //System.out.println(level);
+
 
         }
     }

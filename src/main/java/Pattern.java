@@ -39,8 +39,10 @@ public class Pattern {
     }*/
 
     public String toString(){
-        return "\n-------------------- + \nName: " + name + "\nCraft type: " + craftType + "\nLevel: " + level + "\nYarn amount: " + yarnAmount
-                + "\nNeedle size: " + needleSize + "\nGauge: " + gauge + "\nYarn type: " + yarnType + "\nCategory: " + category + "\n--------------------";
+        return "\n--------------------" + "\nName: " + name + "\nCraft type: " + craftType +
+                "\nLevel: " + level + "\nYarn amount: " + yarnAmount +
+                "\nNeedle size: " + needleSize + "\nGauge: " + gauge + "\nYarn type: " + yarnType +
+                "\nCategory: " + category + "\n--------------------";
     }
 
     public String getPathtopdf() {
