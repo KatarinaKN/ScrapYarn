@@ -35,6 +35,8 @@ public class StartMenu {
 
     //Beder brugeren om at vælge mellem strik og hækling.
     public ArrayList<Pattern> chooseKnitOrCrochet() {
+        knitOrCrochet.clear();
+
         int input = ui.promptNumber("What would you like to do today? " +
                 "\n1. Knit" +
                 "\n2. Crochet");
@@ -60,6 +62,8 @@ public class StartMenu {
 
     //Beder brugeren om at indtaste garnmængde angivet i antal gram.
     public ArrayList<Pattern> chooseYarnAmount() {
+        amountOfYarn.clear();
+
         int input = ui.promptNumber("How many grams of yarn do you have? Enter whole numbers only.");
         for (Pattern p : knitOrCrochet) {
             if (input >= p.getYarnAmount()) {
@@ -75,6 +79,8 @@ public class StartMenu {
 
     //Beder brugeren om at vælge sværhedsgrad.
     public ArrayList<Pattern> chooseLevel() {
+        level.clear();
+
         int input = ui.promptNumber
                 ("What level would you like your suggested pattern to be?" +
                 "\n1. Beginner" +
