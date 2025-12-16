@@ -59,7 +59,6 @@ class TextUI {
 }
 }
 
-package db {
 class DBConnection {
 + Connection getConnection()
 }
@@ -67,87 +66,20 @@ class DBConnection {
 class DBInquiries {
 + ArrayList<Pattern> getAllPatterns()
 }
+
+dataclass Database {
 }
 
-class ImplementLater {
-User
-+ ArrayList<Pattern> chooseNeedleSize()
-+ ArrayList<Pattern> chooseYarnType()
-+ ArrayList<Pattern> chooseGauge()
-+ ArrayList<Pattern> showPatterns()
-+ Pattern getRandomPattern()
-+ ArrayList<Pattern> searchPatterns()
-+ String ifExtraMaterials()
-}
 
 Main *-- StartMenu
 StartMenu -- Pattern
-Pattern *--- Level
-Pattern *--- NeedleSize
-Pattern *--- YarnAmount
-Pattern *--- YarnType
-Pattern *--- ExtraMaterials
-Pattern *--- Gauge
-StartMenu *- TextUI
+StartMenu .> TextUI
 Pattern <|-- Knit
 Pattern <|-- Crochet
-StartMenu - DBConnection
-StartMenu -- DBInquiries
+StartMenu ..> DBInquiries
+DBInquiries ..> DBConnection
+StartMenu ..> OpenPdf
+Pattern *-- Database
 
-enum Level {
-BEGINNER
-INTERMEDIATE
-ADVANCED
-}
-
-enum NeedleSize {
-NEEDLE_2
-NEEDLE_2_5
-NEEDLE_3
-NEEDLE_3_5
-NEEDLE_4
-NEEDLE_6
-}
-
-enum YarnAmount {
-GRAM25
-GRAM50
-GRAM75
-GRAM100
-GRAM125
-GRAM150
-GRAM175
-GRAM200
-}
-
-enum YarnType {
-WOOL
-COTTON
-MOHAIR
-}
-
-enum ExtraMaterials {
-EMBROIDERY_THREAD
-WADDING
-NONE
-}
-
-enum Gauge {
-S10_R10
-S12_R6
-S16_R22
-S17_R20
-S20_R41
-S22_R22
-S22_R30
-S23_R32
-S24_R10
-S24_R13
-S24_R26
-S24_R28
-S24_R66
-S26_R34
-S28_R16
-}
 
 @enduml
