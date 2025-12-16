@@ -24,30 +24,23 @@ public Pattern getRandomPattern(){
     public int chooseGauge() {
         return 0;
     }
-
+    ------KLASSE MED USER
+    public void createUser() {
     }
 
-         boolean running = true;
-  while (running) {
-      chooseKnitOrCrochet();
-      chooseLevel();
-      chooseYarnAmount();
-      for (Pattern p : amountOfYarn) {
-          System.out.println(p);
+     public void saveUser(){
+     }
 
-          //-----Ryk ud hvis der er flere opskrifter?------
-          askToOpenPdf(p);
-      }
-     // running = tryAgain();
-  }
-  endSession();
+
+
+
+
+
 
     TODO indsæt return. Skal den have en parameter? For eksempel at man vil søge på strikkeopskrifter.
     public ArrayList<Pattern> searchPatterns(){
         return ;
     }
-
-
 
 
     TODO er det rigtigt, at alle vores metoder, der stiller spørgsmål, skal returnere noget?
