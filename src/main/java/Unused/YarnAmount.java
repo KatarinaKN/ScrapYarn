@@ -1,3 +1,5 @@
+package Unused;
+
 public enum YarnAmount {
     GRAM25,
     GRAM50,

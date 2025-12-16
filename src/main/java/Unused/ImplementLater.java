@@ -1,3 +1,5 @@
+package Unused;
+
 /*
 ---------FRA STARTMENU-----------
 Giver brugeren en tilfældig opskrift.

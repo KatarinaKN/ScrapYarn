@@ -1,3 +1,5 @@
+package Unused;
+
 public enum Gauge {
     S17_R20,
     S20_R41,
