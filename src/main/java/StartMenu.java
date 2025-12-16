@@ -109,6 +109,10 @@ public class StartMenu {
             ui.displayMessage("Invalid input. Please try again.");
             return chooseLevel();
         }
+        if (level.isEmpty()) {
+            System.out.println("I'm sorry, I don't have any patterns that match your criteria.\n");
+            tryAgain();
+        }
         return level;
     }
 
