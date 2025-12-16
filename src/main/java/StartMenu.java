@@ -39,7 +39,8 @@ public class StartMenu {
 
         int input = ui.promptNumber("What would you like to do today? " +
                 "\n1. Knit" +
-                "\n2. Crochet");
+                "\n2. Crochet" +
+                "\n3. I don't give a shit");
 
         if (input == 1) {
             for (Pattern p : allPatterns) {
@@ -52,6 +53,10 @@ public class StartMenu {
                 if (p.getCraftType().equalsIgnoreCase("crochet")) {
                     knitOrCrochet.add(p);
                 }
+            }
+        } else if (input == 3) {
+            for (Pattern p : allPatterns) {
+                knitOrCrochet.add(p);
             }
         } else {
             ui.displayMessage("Invalid input. Please try again.");
@@ -85,7 +90,8 @@ public class StartMenu {
                 ("What level would you like your suggested pattern to be?" +
                 "\n1. Beginner" +
                 "\n2. Intermediate" +
-                "\n3. Advanced");
+                "\n3. Advanced" +
+                "\n4. I don't give a shit");
 
         if (input == 1) {
             for (Pattern p : amountOfYarn) {
@@ -104,6 +110,10 @@ public class StartMenu {
                 if (p.getLevel().equalsIgnoreCase("advanced")) {
                     level.add(p);
                 }
+            }
+        } else if (input == 4) {
+            for (Pattern p : amountOfYarn) {
+                level.add(p);
             }
         } else {
             ui.displayMessage("Invalid input. Please try again.");
